@@ -20,8 +20,8 @@
                         <div class="row">
                             <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10">
                                 <div class="hero__caption">
-                                    <h1 data-animation="fadeInUp" data-delay=".2s">Environment</h1>
-                                    <P data-animation="fadeInUp" data-delay=".4s">Provide us a green and healthy life<br> we need to protect </P>
+                                    <h1 data-animation="fadeInUp" data-delay=".2s">AGRO Eco</h1>
+                                    <P data-animation="fadeInUp" data-delay=".4s">Ensemble pour une vie plus verte <br> et saine</P>
                                     <!-- Hero-btn -->
                                     <div class="hero__btn">
                                         <a href="#" class="hero-btn mb-10"  data-animation="fadeInUp" data-delay=".8s">Se connecter</a>

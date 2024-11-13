@@ -1,30 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ include file="components/header.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>DÃ©chet</title>
+    <meta charset="UTF-8">
+    <title>Déchet</title>
+    <!-- Réutilisation des liens de styles à partir de liens.jsp -->
+    
 </head>
 <body>
-<h2> DÃ©chet</h2>
+    <h2> Déchet</h2>
 
-
-<table>
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>DÃ©chet (kg)</th>
-        </tr>
-    </thead>
-    <tbody>
+    <table>
+        <thead>
             <tr>
-                <td></td>
-                <td></td>
+                <th>Date</th>
+                <th>Déchet (kg)</th>
             </tr>
-    </tbody>
-</table>
-<%@ include file="index.jsp" %>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Exemple</td>
+                <td>10</td>
+            </tr>
+        </tbody>
+    </table>
 
+    <%@ include file="components/footer.jsp" %>
 </body>
 </html>

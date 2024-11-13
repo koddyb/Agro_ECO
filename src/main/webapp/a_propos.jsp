@@ -18,11 +18,11 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap hero-cap2 pt-70">
-                                <h2>About us</h2>
+                                <h2>AGRO Eco</h2>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="#">About</a></li> 
+                                        <li class="breadcrumb-item"><a href="#">À propos</a></li> 
                                     </ol>
                                 </nav>
                             </div>

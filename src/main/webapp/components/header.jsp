@@ -32,7 +32,7 @@
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
-                                    <a href="index.html"><img src="assets/img/logo/loder.png" alt=""></a>
+                                    <a href="index.jsp"><img src="assets/img/logo/loder.png" width="60px" height="60px" alt=""></a>
                                 </div>
                             </div>
                             	<div class="col-xl-10 col-lg-10">
@@ -43,7 +43,6 @@
 							                <ul id="navigation" class="d-flex list-unstyled justify-content-center m-0">
 							                    <li><a href="index.jsp">Accueil</a></li>
 							                    <li><a href="a_propos.jsp">À propos</a></li>
-							                    <li><a href="contact.html">Aide?</a></li>
 							                </ul>
 							            </nav>
 							        </div>

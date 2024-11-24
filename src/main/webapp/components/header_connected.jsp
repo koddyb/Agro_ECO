@@ -47,9 +47,6 @@
 							            </nav>
 							        </div>
 							        <!-- Header-btn -->
-							        <div class="header-right-btn d-none d-lg-block ml-auto">
-							            <a href="vue/auth/login.jsp" class="btn header-btn">Se connecter</a>
-							        </div>
 							    </div>
 							</div>
                             <!-- Mobile Menu -->

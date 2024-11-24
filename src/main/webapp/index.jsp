@@ -10,7 +10,6 @@
 
 <body>
     <main>
-        
         <!-- slider Area Start-->
         <div class="slider-area position-relative">
             <div class="slider-active dot-style">
@@ -24,7 +23,7 @@
                                     <P data-animation="fadeInUp" data-delay=".4s">Ensemble pour une vie plus verte <br> et saine</P>
                                     <!-- Hero-btn -->
                                     <div class="hero__btn">
-                                        <a href="#" class="hero-btn mb-10"  data-animation="fadeInUp" data-delay=".8s">Se connecter</a>
+                                        <a href="vue/auth/login.jsp" class="hero-btn mb-10"  data-animation="fadeInUp" data-delay=".8s">Se connecter</a>
                                     </div>
                                 </div>
                             </div>

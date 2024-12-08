@@ -1,75 +1,25 @@
 package controleur;
 
-import java.util.ArrayList;
-
-import modele.Modele;
+import Modele.Modele;
 
 public class Controleur {
-	
-	/****** Gestion des déchets ******/
+    /********** Gestion des User ******/
+    public static User verifConnexion(String email, String password) {
+        return Modele.verifconnexion(email, password);
+    }
+    
+    // Vérifie dans la base de données si le mot de passe actuel est correct
+    public static boolean verifPassword(String email, String currentPassword) {
+        return Modele.verifPassword(email, currentPassword);
+    }
 
-	public static void insertDechet (Dechet unDechet) {
-		Modele.insertDechet(unDechet);
-	}
-	public static ArrayList<Dechet> selectAllDechets () {
-		return Modele.selectAllDechets();
-	}
-	public static ArrayList<Dechet> selectLikeDechets (String filtre) {
-		return Modele.selectLikeDechets(filtre);
-	}
-	public static void deleteDechet (int idDechet) {
-		Modele.deleteDechet(idDechet);
-	}
-	public static Dechet selectWhereDechet(int idDechet) {
-		return Modele.selectWhereDechet(idDechet);
-	}
-	public static void updateDechet (Dechet unDechet) {
-		Modele.updateDechet(unDechet);
-	}
-	
-	
-	/****** Gestion de la consommation d'eau ******/
-	
-	public static void insertConsommationEau (ConsommationEau uneConsommationEau) {
-		Modele.insertDechet(uneConsommationEau);
-	}
-	public static ArrayList<ConsommationEau> selectAllConsommationsEau () {
-		return Modele.selectAllConsommationsEau();
-	}
-	public static ArrayList<ConsommationEau> selectLikeConsommationsEau (String filtre) {
-		return Modele.selectLikeConsommationsEau(filtre);
-	}
-	public static void deleteConsommationEau (int idConsommationEau) {
-		Modele.deleteConsommationEau(idConsommationEau);
-	}
-	public static Dechet selectWhereConsommationEau(int idConsommationEau) {
-		return Modele.selectWhereConsommationEau(idConsommationEau);
-	}
-	public static void updateConsommationEau (ConsommationEau uneConsommationEau) {
-		Modele.updateConsommationEau(uneConsommationEau);
-	}
+    // Mettre à jour le mot de passe dans la base de données
+    public static boolean updatePassword(String email, String newPassword) {
+        return Modele.updatePassword(email, newPassword);
+    }
 
-	
-	/****** Gestion de l'empreinte carbone ******/
-	
-	public static void insertEmpreinteCarbone (EmpreinteCarbone uneEmpreinteCarbone) {
-		Modele.insertDechet(uneEmpreinteCarbone);
-	}
-	public static ArrayList<EmpreinteCarbone> selectAllEmpreintesCarbone () {
-		return Modele.selectAllEmpreintesCarbone();
-	}
-	public static ArrayList<EmpreinteCarbone> selectLikeEmpreintesCarbone (String filtre) {
-		return Modele.selectLikeEmpreintesCarbone(filtre);
-	}
-	public static void deleteEmpreinteCarbone (int idDechetEmpreinteCarbone) {
-		Modele.deleteEmpreinteCarbone(idDechetEmpreinteCarbone);
-	}
-	public static Dechet selectWhereEmpreinteCarbone(int idDechetEmpreinteCarbone) {
-		return Modele.selectWhereEmpreinteCarbone(idDechetEmpreinteCarbone);
-	}
-	public static void updateEmpreinteCarbone (EmpreinteCarbone uneEmpreinteCarbone) {
-		Modele.updateEmpreinteCarbone(uneEmpreinteCarbone);
-	}
-
-
+    // Mettre à jour le statut de l'utilisateur
+    public static void updateStatus(String email, String newStatus) {
+        Modele.updateStatus(email, newStatus);
+    }
 }

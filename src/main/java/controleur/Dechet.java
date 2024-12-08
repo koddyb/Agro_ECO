@@ -1,4 +1,4 @@
-package controleur;
+/*package controleur;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,4 +31,13 @@ public class DechetServlet extends HttpServlet {
         
 	}
 
+}*/
+
+
+package controleur;
+
+public class Dechet {
+	
+	//Ici code du controleur
+	
 }

@@ -1,5 +1,6 @@
 package controleur;
 
+
 public class User {
     private int id;
     private String name, first_name, email, password, role, status;
@@ -16,6 +17,7 @@ public class User {
     }
 
     public User(String name, String first_name, String email, String password, String role, String status) {
+        
         super();
         this.id = 0;
         this.name = name;
@@ -24,7 +26,7 @@ public class User {
         this.password = password;
         this.role = role;
         this.status = status;
-    }
+    } 
 
     public int getIduser() {
         return id;

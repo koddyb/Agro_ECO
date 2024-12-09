@@ -1,68 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!doctype html>
-<html class="no-js" lang="zxx">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>AGRO Eco</title>
-    <%@ include file="liens.jsp" %>
-</head>
 
-<body>
-    <!-- ? Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/loder.png" alt="">
+<!-- Tout le header et la navbar ici     -->
+<header class="header-area header-three">
+    <div id="header-sticky" class="menu-area">
+        <div class="container">
+            <div class="second-menu">
+                <div class="row align-items-center">
+                    <div class="col-xl-2 col-lg-2">
+                        <div class="logo">
+                            <a href="index.html"><img src="${pageContext.request.contextPath}/assets/img/logo/logo.png" alt="logo"></a>
+                        </div>
+                    </div>
+                   <div class="col-xl-7 col-lg-7">
+                      
+                        <div class="main-menu text-right text-xl-right">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <li><a href="about.jsp">A propos de nous</a></li>
+                                    <li><a href="projects.jsp">Projet</a></li>
+                                    <li><a href="blog.jsp">Blog</a></li>
+                                    <li><a href="blog.jsp">gerer </a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>   
+
+                    <div class="col-xl-1 col-lg-1 text-center d-none d-lg-block mt-15 mb-15">
+                        <a href="login.jsp" class="menu-tigger"><i class="fal fa-search"></i></a>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 text-right d-none d-lg-block mt-15 mb-15">
+                        <a href="vue/auth/login.jsp" class="btn ss-btn">Connexion</a>
+                    </div>
+                  
+                    
+                        <div class="col-12">
+                            <div class="mobile-menu"></div>
+                        </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Preloader Start -->
-    <header>
-        <!-- Header Start -->
-        <div class="header-area">
-            <div class="main-header ">
-                <div class="header-bottom  header-sticky">
-                    <div class="container-fluid">
-                        <div class="row align-items-center">
-                            <!-- Logo -->
-                            <div class="col-xl-2 col-lg-2">
-                                <div class="logo">
-                                    <a href="index.jsp"><img src="assets/img/logo/loder.png" width="60px" height="60px" alt=""></a>
-                                </div>
-                            </div>
-                            	<div class="col-xl-10 col-lg-10">
-							    	<div class="menu-wrapper d-flex align-items-center">
-							        <!-- Main-menu -->
-							        <div class="main-menu d-none d-lg-block mx-auto">
-							            <nav>
-							                <ul id="navigation" class="d-flex list-unstyled justify-content-center m-0">
-							                    <li><a href="index.jsp">Accueil</a></li>
-							                    <li><a href="a_propos.jsp">À propos</a></li>
-							                </ul>
-							            </nav>
-							        </div>
-							        <!-- Header-btn -->
-							        <div class="header-right-btn d-none d-lg-block ml-auto">
-							            <a href="vue/auth/login.jsp" class="btn header-btn">Se connecter</a>
-							        </div>
-							    </div>
-							</div>
-                            <!-- Mobile Menu -->
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+</header>
+
+        <!-- offcanvas-area -->
+        <div class="offcanvas-menu">
+            <span class="menu-close"><i class="fas fa-times"></i></span>
+          <form role="search" method="get" id="searchform"   class="searchform" action="http://wordpress.zcube.in/xconsulta/">
+                            <input type="text" name="s" id="search" value="" placeholder="Search"  />
+                            <button><i class="fa fa-search"></i></button>
+                        </form>
+
+                
+                <div id="cssmenu3" class="menu-one-page-menu-container">
+                    <ul id="menu-one-page-menu-2" class="menu">
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="index.jsp">AgroEco</a></li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="about.html">A propos de nous</a></li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="projects.jsp">Nos projets</a></li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="blog.jsp">Blog</a></li>
+                    </ul>
+                </div>  
+                
+                <div id="cssmenu2" class="menu-one-page-menu-container">
+                    <ul id="menu-one-page-menu-1" class="menu">
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#home"><span>Numero de contact ici</span></a></li>
+                        <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#howitwork"><span>info@example.com</span></a></li> -->
+                    </ul>
+                </div>                
         </div>
-        <!-- Header End -->
-    </header>
-</body>  
-    
-    
+        <div class="offcanvas-overly"></div>
+             <!-- offcanvas-end -->

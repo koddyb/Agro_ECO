@@ -1,15 +1,14 @@
 package Modele;
 
+import controleur.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import controleur.User;
-
 public class Modele {
-    private static Connexion uneConnexion = new Connexion("localhost:8889", "agroeco_db", "root", "root");
+    private static Connexion uneConnexion = new Connexion("localhost:3306", "agroeco_db", "root", "");
 
-    /********** Vérification des informations de connexion ******/
+    /********** Vï¿½rification des informations de connexion ******/
     public static User verifconnexion(String email, String password) {
         User unUser = null;
         String requete = "SELECT * FROM user WHERE email = ? AND password = ?";
@@ -24,18 +23,18 @@ public class Modele {
                 String name = unRes.getString("name");
                 String first_name = unRes.getString("first_name");
                 String role = unRes.getString("role");
-                String status = unRes.getString("status");  // Récupérer le statut
+                String status = unRes.getString("status");  // Rï¿½cupï¿½rer le statut
                 unUser = new User(id, name, first_name, email, password, role, status);
             }
             pstmt.close();
             uneConnexion.deconnexion();
         } catch (SQLException exp) {
-            System.out.println("Erreur d'exécution : " + exp.getMessage());
+            System.out.println("Erreur d'execution : " + exp.getMessage());
         }
         return unUser;
     }
 
-    /********** Vérification du mot de passe actuel ******/
+    /********** Vï¿½rification du mot de passe actuel ******/
     public static boolean verifPassword(String email, String currentPassword) {
         boolean isCorrect = false;
         String requete = "SELECT password FROM user WHERE email = ?";
@@ -51,12 +50,12 @@ public class Modele {
             pstmt.close();
             uneConnexion.deconnexion();
         } catch (SQLException exp) {
-            System.out.println("Erreur d'exécution : " + exp.getMessage());
+            System.out.println("Erreur d'execution : " + exp.getMessage());
         }
         return isCorrect;
     }
 
-    /********** Mise à jour du mot de passe ******/
+    /********** Mise ï¿½ jour du mot de passe ******/
     public static boolean updatePassword(String email, String newPassword) {
         boolean success = false;
         String requete = "UPDATE user SET password = ? WHERE email = ?";
@@ -72,12 +71,12 @@ public class Modele {
             pstmt.close();
             uneConnexion.deconnexion();
         } catch (SQLException exp) {
-            System.out.println("Erreur d'exécution : " + exp.getMessage());
+            System.out.println("Erreur d'execution : " + exp.getMessage());
         }
         return success;
     }
 
-    /********** Mise à jour du statut de l'utilisateur ******/
+    /********** Mise ï¿½ jour du statut de l'utilisateur ******/
     public static boolean updateStatus(String email, String newStatus) {
         boolean success = false;
         String requete = "UPDATE user SET status = ? WHERE email = ?";
@@ -93,7 +92,7 @@ public class Modele {
             pstmt.close();
             uneConnexion.deconnexion();
         } catch (SQLException exp) {
-            System.out.println("Erreur d'exécution : " + exp.getMessage());
+            System.out.println("Erreur d'execution : " + exp.getMessage());
         }
         return success;
     }

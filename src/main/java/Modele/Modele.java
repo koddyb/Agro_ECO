@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Modele {
-    private static Connexion uneConnexion = new Connexion("localhost:8889", "agroeco_db", "root", "root");
+    private static Connexion uneConnexion = new Connexion("localhost:3306", "agroeco_db", "root", "");
 
     /********** Vï¿½rification des informations de connexion ******/
     public static User verifconnexion(String email, String password) {
@@ -79,7 +79,7 @@ public class Modele {
         return success;
     }
 
-    /********** Mise à jour du statut de l'utilisateur ******/
+    /********** Mise ï¿½ jour du statut de l'utilisateur ******/
     public static boolean updateStatus(String email, String newStatus) {
         boolean success = false;
         String requete = "UPDATE user SET status = ? WHERE email = ?";
@@ -100,7 +100,7 @@ public class Modele {
         return success;
     }
     
-    /********** Affichage des utilisateurs à l'exception de celui connecté ******/
+    /********** Affichage des utilisateurs ï¿½ l'exception de celui connectï¿½ ******/
     public static List<User> getAllUsersExcept(int currentUserId) {
         List<User> users = new ArrayList<>();
         String requete = "SELECT * FROM user WHERE id != ?";
@@ -146,7 +146,7 @@ public class Modele {
             
             int rowsInserted = pstmt.executeUpdate();
             if (rowsInserted > 0) {
-                success = true; // Si l'insertion est réussie
+                success = true; // Si l'insertion est rï¿½ussie
             }
             
             pstmt.close();
@@ -176,7 +176,7 @@ public class Modele {
         return false;
     }
     
-    /********** Récupération des informations concernant un utilisateur ******/
+    /********** Rï¿½cupï¿½ration des informations concernant un utilisateur ******/
     public static User getUserById(int userId) {
         String requete = "SELECT * FROM user WHERE id = ?";
         try {
@@ -202,12 +202,12 @@ public class Modele {
                 return user;
             }
         } catch (SQLException exp) {
-            System.out.println("Erreur de récupération de l'utilisateur : " + exp.getMessage());
+            System.out.println("Erreur de rï¿½cupï¿½ration de l'utilisateur : " + exp.getMessage());
         }
         return null;
     }
     
-    /********** Mise à jour d'un utilisateur ******/
+    /********** Mise ï¿½ jour d'un utilisateur ******/
     public static boolean updateUser(int userId, String name, String firstName, String email, String password, String role, String status) {
         String requete = "UPDATE user SET name = ?, first_name = ?, email = ?, password = ?, role = ?, status = ? WHERE id = ?";
         try {
@@ -225,7 +225,7 @@ public class Modele {
             uneConnexion.deconnexion();
             return rowsAffected > 0;
         } catch (SQLException exp) {
-            System.out.println("Erreur de mise à jour : " + exp.getMessage());
+            System.out.println("Erreur de mise ï¿½ jour : " + exp.getMessage());
         }
         return false;
     }

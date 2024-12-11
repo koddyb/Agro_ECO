@@ -30,7 +30,7 @@
                         <a href="vue/auth/login.jsp" class="menu-tigger"><i class="fal fa-search"></i></a>
                     </div>
                     <%
-                        if (session.getAttribute("user") == null) {
+                        if (session.getAttribute("currentUserId") == null) {
                             %> <div class="col-xl-2 col-lg-2 text-right d-none d-lg-block mt-15 mb-15">
                                 <a href="vue/auth/login.jsp" class="btn ss-btn">Connexion</a>
                             </div>

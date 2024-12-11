@@ -48,7 +48,7 @@
                                         
                                          <div class="slider-btn mt-30">                                          
                                             <a href="projects.jsp" class="btn ss-btn mr-15">En savoir plus</a>
-                                            <% if (session.getAttribute("user") == null) { %>
+                                            <% if (session.getAttribute("currentUserId") == null) { %>
                                                 <a href="vue/auth/login.jsp" class="btn ss-btn active">Admin? Connecte toi</a>
                                             <% } %>
                                         </div>   
@@ -146,9 +146,9 @@
                      <div class="row">
                           <div class="col-lg-4 col-md-12 col-sm-12">
                               <div class="section-title">                                 
-                                  <h5>COUNTER</h5>
+                                  <h5>Chifres</h5>
                                 <h2>
-                                  Fun Facts
+                                  Fait divers
                                 </h2>
                                
                             </div>

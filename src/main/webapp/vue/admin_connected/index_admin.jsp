@@ -21,8 +21,8 @@
 </head>
 <body>
 	<section id="sidebar">
-		<a href="#" class="brand">
-			<i class='bx bxs-smile'></i>
+		<a href="../" class="brand">
+			<img src="${pageContext.request.contextPath}/assets/img/logo/agro-eco.png" alt="logo" style="width: 30px; height: 30px; margin: 20px;">
 			<span class="text">Agro Eco</span>
 		</a>
 		<ul class="side-menu top">

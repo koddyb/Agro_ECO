@@ -9,7 +9,7 @@
                 <div class="row align-items-center">
                     <div class="col-xl-2 col-lg-2">
                         <div class="logo">
-                            <a href="index.html"><img src="${pageContext.request.contextPath}/assets/img/logo/logo.png" alt="logo"></a>
+                            <a href="index.jsp"><img src="${pageContext.request.contextPath}/assets/img/logo/agro-eco.png" alt="logo" style="width: 50px; height: 50px;"><p class="text-">AgroEco</p></a>
                         </div>
                     </div>
                    <div class="col-xl-7 col-lg-7">

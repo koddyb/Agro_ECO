@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Capatel - Solar Energy HTML Template</title>
         <meta name="description" content="">
@@ -19,7 +19,7 @@
         <main>
             
             <!-- search-popup -->
-		<div class="modal fade bs-example-modal-lg search-bg popup1" tabindex="-1" role="dialog">
+		<!-- <div class="modal fade bs-example-modal-lg search-bg popup1" tabindex="-1" role="dialog">
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content search-popup">
 					<div class="text-center">
@@ -31,24 +31,26 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- /search-popup -->
             <!-- slider-area -->
             <section id="home" class="slider-area slider-four fix p-relative">
                
                 <div class="slider-active">
-				<div class="single-slider slider-bg d-flex align-items-center" style="background: url(img/slider/slider_img_bg.png) no-repeat; background-position: right top;">
+				<div class="single-slider slider-bg d-flex align-items-center" style="background: url(assets/img/slider/slider_img_bg.png) no-repeat; background-position: right top;">
                         <div class="container">
                            <div class="row justify-content-center pt-50">
                                 <div class="col-lg-7 col-md-7">
                                     <div class="slider-content s-slider-content mt-150">
                                         <h5 data-animation="fadeInDown" data-delay=".4s">Bien venue sur AgroECO</h5>
-                                         <h2 data-animation="fadeInUp" data-delay=".4s">nous Euvrons pour la protection de la nature</h2>
-                                        <p data-animation="fadeInUp" data-delay=".6s">Curabitur nec laoreet nulla. Mauris aliquam malesuada nibh, sodales ullamp sapien imperdiet vel. Vestibulum fringilla purus metus.</p>
+                                         <h3 class="text-uppercase" data-animation="fadeInUp" data-delay=".4s">Nous Euvrons pour la protection de la nature</h3>
+                                        <p data-animation="fadeInUp" data-delay=".6s">Chez AgroEco, nous croyons en un avenir durable et nous nous engageons activement à réduire notre empreinte carbone. En tant qu'entreprise responsable, nous avons mis en place une série de bonnes pratiques pour minimiser notre impact environnemental et promouvoir un mode de vie plus écologique.</p>
                                         
                                          <div class="slider-btn mt-30">                                          
                                             <a href="projects.jsp" class="btn ss-btn mr-15">En savoir plus</a>
-                                             <a href="vue/auth/login.jsp" class="btn ss-btn active">Admin? Connecte toi</a>
+                                            <% if (session.getAttribute("user") == null) { %>
+                                                <a href="vue/auth/login.jsp" class="btn ss-btn active">Admin? Connecte toi</a>
+                                            <% } %>
                                         </div>   
                                         
                                                               
@@ -74,22 +76,28 @@
                     <div class="row align-items-center">
                          <div class="col-lg-6 col-md-12 col-sm-12">
                             <div class="s-about-img p-relative" >
-                                <img src="img/features/about_img.png" alt="img">    
+                                <img src="assets/img/autres/Nature_protection.jpg" alt="img">    
                             </div>
                           <div class="about-text second-about">
-                                    <span>50 </span>
-                              Years of Experience
+                                    <span>4 </span>
+                              Années d'experiences 
                                 </div>
                         </div>
                         
 					<div class="col-lg-6 col-md-12 col-sm-12">
                             <div class="about-content s-about-content pl-30">
                                 <div class="about-title second-title pb-25">  
-                                    <h5>ABOUT US</h5>
-                                    <h2>What's Our Resources Story</h2>
+                                    <h5>Ce que nous faison</h5>
+                                    <h2>Nos Engagements pour la Planète</h2>
                                 </div>
                                 
-                                <p>Praesent fringilla lorem tincidunt, commodo erat sit amet, eleifend neque. Etiam nec vestibulum turpis, quis tempus elit. Sed tempus elit porttitor odio gravida, sed maximus turpis mattis. Vivamus at urna ut libero ornare congue.</p>
+                                <p>Énergie Renouvelable : Nous utilisons exclusivement de l'énergie verte provenant de sources renouvelables pour alimenter nos bureaux et installations.<br>
+
+                                    Réduction des Déchets : Grâce à un programme rigoureux de tri et de recyclage, nous avons réduit nos déchets de 50% au cours des deux dernières années.<br>
+                                    
+                                    Transport Durable : Nous encourageons nos employés à utiliser des modes de transport durables, tels que le vélo, les transports en commun et le covoiturage. <br>
+                                    
+                                    Produits Écologiques : Nous privilégions des matériaux durables et écologiques dans tous nos produits et emballages.</p>
                                   <ul class="progress-outer  mt-30">
                                     <li>
                                         <div class="progress-box">
@@ -100,9 +108,9 @@
                                             <span class="progress-right">
                                                 <span class="progress-bar"></span>
                                             </span>
-                                            <div class="progress-value">20MI</div>
+                                            <div class="progress-value">40%</div>
                                         </div>
-                                            <h4>Project Done</h4>
+                                            <h4>Reduction d'empreinte Carbone</h4>
                                         </div>
                                     </li>
                                   <li>
@@ -114,9 +122,9 @@
                                             <span class="progress-right">
                                                 <span class="progress-bar"></span>
                                             </span>
-                                            <div class="progress-value">30MI</div>
+                                            <div class="progress-value">30%</div>
                                         </div>
-                                            <h4>Wrokers work</h4>
+                                            <h4>Réduction des déchets</h4>
                                         </div>
                                     </li>
                                 </ul>
@@ -150,7 +158,7 @@
                                   <div class="col-lg-3 col-md-6 col-sm-12">
                                      <div class="single-counter wow fadeInUp animated" data-animation="fadeInDown animated" data-delay=".2s">
                                          <div class="icon">
-                                             <img src="img/icon/cn-iocn01.png" alt="img">
+                                             <img src="assets/img/icon/cn-iocn01.png" alt="img">
                                          </div>
 
                                         <div class="counter p-relative">
@@ -163,7 +171,7 @@
                               <div class="col-lg-3 col-md-6 col-sm-12">
                                     <div class="single-counter wow fadeInUp animated" data-animation="fadeInDown animated" data-delay=".2s">
                                          <div class="icon">
-                                             <img src="img/icon/cn-iocn02.png" alt="img">
+                                             <img src="assets/img/icon/cn-iocn02.png" alt="img">
                                          </div>
                                         <div class="counter p-relative">
                                             <span class="count">987</span>     
@@ -176,7 +184,7 @@
                                 <div class="col-lg-3 col-md-6 col-sm-12">
                                     <div class="single-counter wow fadeInUp animated" data-animation="fadeInDown animated" data-delay=".2s">
                                         <div class="icon">
-                                            <img src="img/icon/cn-iocn03.png" alt="img">
+                                            <img src="assets/img/icon/cn-iocn03.png" alt="img">
                                          </div>
 
                                         <div class="counter p-relative">
@@ -189,7 +197,7 @@
                                 <div class="col-lg-3 col-md-6 col-sm-12">
                                     <div class="single-counter wow fadeInUp animated" data-animation="fadeInDown animated" data-delay=".2s">
                                          <div class="icon">
-                                           <img src="img/icon/cn-iocn04.png" alt="img">
+                                           <img src="assets/img/icon/cn-iocn04.png" alt="img">
                                          </div>
 
                                         <div class="counter p-relative">
@@ -254,7 +262,7 @@
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4">
                                         <div class="blog-thumb2">
-                                            <a href="blog-details.html"><img src="img/blog/inner_b1.jpg" alt="img"></a>
+                                            <a href="blog-details.html"><img src="assets/img/blog/inner_b1.jpg" alt="img"></a>
 
                                         </div>
                                     </div>
@@ -284,7 +292,7 @@
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4">
                                         <div class="blog-thumb2">
-                                            <a href="blog-details.html"><img src="img/blog/inner_b2.jpg" alt="img"></a>
+                                            <a href="blog-details.html"><img src="assets/img/blog/inner_b2.jpg" alt="img"></a>
 
                                         </div>
                                     </div>
@@ -312,7 +320,7 @@
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4">
                                         <div class="blog-thumb2">
-                                            <a href="blog-details.html"><img src="img/blog/inner_b3.jpg" alt="img"></a>
+                                            <a href="blog-details.html"><img src="assets/img/blog/inner_b3.jpg" alt="img"></a>
 
                                         </div>
                                     </div>
@@ -342,7 +350,7 @@
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4">
                                         <div class="blog-thumb2">
-                                            <a href="blog-details.html"><img src="img/blog/inner_b4.jpg" alt="img"></a>
+                                            <a href="blog-details.html"><img src="assets/img/blog/inner_b4.jpg" alt="img"></a>
 
                                         </div>
                                     </div>

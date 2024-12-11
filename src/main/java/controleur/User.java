@@ -1,5 +1,6 @@
 package controleur;
 
+
 public class User {
     private int id;
     private String name, first_name, email, password, role, status, created_at;
@@ -19,6 +20,7 @@ public class User {
 
     // Constructeur sans `created_at` pour les cas où ce champ n'est pas nécessaire
     public User(String name, String first_name, String email, String password, String role, String status) {
+        
         super();
         this.id = 0;
         this.name = name;
@@ -27,8 +29,12 @@ public class User {
         this.password = password;
         this.role = role;
         this.status = status;
+<<<<<<< HEAD
         this.created_at = null; // Valeur par défaut si non spécifiée
     }
+=======
+    } 
+>>>>>>> b238547b8c308387bdab16deaf5b8562bdaacc99
 
     // Getters et Setters
     public int getIduser() {

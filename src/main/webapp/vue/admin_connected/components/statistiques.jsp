@@ -70,31 +70,46 @@
 						<i class='bx bx-filter' ></i>
 					</div>
 					<table>
-						<thead>
-							<tr>
-								<th>Utilisateur</th>
-								<th>Date de créat.</th>
-								<th>Status</th>
-							</tr>
-						</thead>
-						<tbody>
-						
-							<%
-								for (User user : localUsers){
-		            		%>
-							<tr>
-								<td>
-									<img src="../../assets/img/icon/icone-person.png">
-									<p><%= user.getFirstName() %> <%= user.getNom() %></p>
-								</td>
-								<td><%= user.getCreatedAt() %></td>
-								<td><span class="status completed"><%= user.getStatus() %></span></td>
-							</tr>
-							<%
-		                		}
-							%>
-						</tbody>
-					</table>
+					    <thead>
+					        <tr>
+					            <th>Utilisateur</th>
+					            <th>Date de créat.</th>
+					            <th>Status</th>
+					        </tr>
+					    </thead>
+					    <tbody>
+					        <%
+					            for (User user : localUsers) {
+					                String statusClass = "";
+					                String statusText = "";
+					                switch (user.getStatus()) {
+					                    case "new":
+					                        statusClass = "status process";
+					                        statusText = "nouveau";
+					                        break;
+					                    case "confirmed":
+					                        statusClass = "status completed";
+					                        statusText = "confirmé";
+					                        break;
+					                    case "suspended":
+					                        statusClass = "status pending";
+					                        statusText = "suspendu";
+					                        break;
+					                }
+					        %>
+					        <tr>
+					            <td>
+					                <img src="../../assets/img/icon/icone-person.png">
+					                <p><%= user.getFirstName() %> <%= user.getNom() %></p>
+					            </td>
+					            <td><%= user.getCreatedAt() %></td>
+					            <td><span class="<%= statusClass %>"><%= statusText %></span></td>
+					        </tr>
+					        <%
+					            }
+					        %>
+					    </tbody>
+					</table>	
 				</div>
 				<div class="todo">
 					<div class="head">

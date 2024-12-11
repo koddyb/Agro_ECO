@@ -56,7 +56,7 @@
 			
 			        // Redirection vers la page de confirmation ou la page appropriée
 			        //response.sendRedirect("index_admin.jsp");
-			        response.sendRedirect(request.getContextPath() + "/vue/admin_connected/index_admin.jsp?redirect=store");
+			        response.sendRedirect(request.getContextPath() + "/vue/admin_connected/index_admin.jsp?redirect=addUser");
 			%>
 
                     <div class="message"><%= message %></div>

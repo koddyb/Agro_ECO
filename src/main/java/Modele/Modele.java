@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Modele {
-    private static Connexion uneConnexion = new Connexion("localhost:3306", "agroeco_db", "root", "");
+    private static Connexion uneConnexion = new Connexion("localhost:8889", "agroeco_db", "root", "root");
 
     /********** V�rification des informations de connexion ******/
     public static User verifconnexion(String email, String password) {

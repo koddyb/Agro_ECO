@@ -27,13 +27,27 @@
                     </div>   
 
                     <div class="col-xl-1 col-lg-1 text-center d-none d-lg-block mt-15 mb-15">
-                        <a href="login.jsp" class="menu-tigger"><i class="fal fa-search"></i></a>
+                        <a href="vue/auth/login.jsp" class="menu-tigger"><i class="fal fa-search"></i></a>
                     </div>
-                    <div class="col-xl-2 col-lg-2 text-right d-none d-lg-block mt-15 mb-15">
-                        <a href="vue/auth/login.jsp" class="btn ss-btn">Connexion</a>
-                    </div>
-                  
-                    
+                    <%
+                        if (session.getAttribute("user") == null) {
+                            %> <div class="col-xl-2 col-lg-2 text-right d-none d-lg-block mt-15 mb-15">
+                                <a href="vue/auth/login.jsp" class="btn ss-btn">Connexion</a>
+                            </div>
+                            <% }
+                        else {
+                            %> <div class="col-xl-2 col-lg-2 text-right d-none d-lg-block mt-15 mb-15">
+                                <div class="menu-button has-sub">
+                                    <a href="#" class="btn ss-btn"><i class="fas fa-user"></i></a>
+                                    <ul class="sub-menu">
+                                        <li><a href="profil.jsp">Profil</a></li>
+                                        <li><a href="Deconnexion.jsp">Deconnexion</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <%
+                        }
+                    %>          
                         <div class="col-12">
                             <div class="mobile-menu"></div>
                         </div>

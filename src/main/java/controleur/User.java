@@ -29,12 +29,8 @@ public class User {
         this.password = password;
         this.role = role;
         this.status = status;
-<<<<<<< HEAD
         this.created_at = null; // Valeur par défaut si non spécifiée
     }
-=======
-    } 
->>>>>>> b238547b8c308387bdab16deaf5b8562bdaacc99
 
     // Getters et Setters
     public int getIduser() {

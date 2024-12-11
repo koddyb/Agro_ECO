@@ -17,10 +17,9 @@
                         <div class="main-menu text-right text-xl-right">
                             <nav id="mobile-menu">
                                 <ul>
-                                    <li><a href="about.jsp">A propos de nous</a></li>
+                                    <li><a href="a_propos.jsp">A propos de nous</a></li>
                                     <li><a href="projects.jsp">Projet</a></li>
                                     <li><a href="blog.jsp">Blog</a></li>
-                                    <li><a href="blog.jsp">gerer </a></li>
                                 </ul>
                             </nav>
                         </div>

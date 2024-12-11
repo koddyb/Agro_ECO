@@ -18,18 +18,18 @@
         String messageType = null;
         String destination = null;
 
-     	// Vérification des informations de connexion si le bouton "Connexion" a été cliqué
+     	// Vï¿½rification des informations de connexion si le bouton "Connexion" a ï¿½tï¿½ cliquï¿½
         if (request.getParameter("Connexion") != null) {
-            // Récupération des paramètres email et mot de passe soumis par le formulaire
+            // Rï¿½cupï¿½ration des paramï¿½tres email et mot de passe soumis par le formulaire
             String email = request.getParameter("email");
             String password = request.getParameter("password");
 
-            // Appel de la méthode pour vérifier les informations de connexion
+            // Appel de la mï¿½thode pour vï¿½rifier les informations de connexion
             User unUser = Controleur.verifConnexion(email, password);
 
-            // Si un utilisateur correspondant est trouvé
+            // Si un utilisateur correspondant est trouvï¿½
             if (unUser != null) {
-                // On vérifie le statut de l'utilisateur
+                // On vï¿½rifie le statut de l'utilisateur
                 String status = unUser.getStatus();
 
                 // Si le statut est "new", l'utilisateur doit changer son mot de passe
@@ -42,14 +42,14 @@
 
                 // Si le statut est "confirmed", l'utilisateur peut se connecter
                 if ("confirmed".equals(status)) {
-                    // Ajouter l'ID de l'utilisateur connecté dans la session
+                    // Ajouter l'ID de l'utilisateur connectï¿½ dans la session
                     session.setAttribute("currentUserId", unUser.getIduser());
 
-                    // Message de bienvenue à afficher après la connexion
-                    message = "Bienvenue, " + unUser.getNom() + "! Vous êtes connecté.";
+                    // Message de bienvenue ï¿½ afficher aprï¿½s la connexion
+                    message = "Bienvenue, " + unUser.getNom() + "! Vous ï¿½tes connectï¿½.";
                     messageType = "success";
 
-                    // Vérification du rôle de l'utilisateur pour redirection appropriée
+                    // Vï¿½rification du rï¿½le de l'utilisateur pour redirection appropriï¿½e
                     if ("admin".equals(unUser.getRole())) {
                         // Redirection vers le tableau de bord administrateur
                         destination = request.getContextPath() + "/vue/admin_connected/index_admin.jsp"; 
@@ -58,12 +58,12 @@
                         destination = request.getContextPath() + "/vue/user_connected/index_user.jsp"; 
                     }
                     
-                    // Redirection vers la destination appropriée après connexion
+                    // Redirection vers la destination appropriï¿½e aprï¿½s connexion
                     response.sendRedirect(destination);
                     return;
                 }
 
-                // Si le statut est "suspended", l'accès est bloqué
+                // Si le statut est "suspended", l'accï¿½s est bloquï¿½
                 if ("suspended".equals(status)) {
                     // Message d'erreur indiquant que le compte est suspendu
                     message = "Votre compte est suspendu. Veuillez contacter l'administrateur.";
@@ -84,7 +84,7 @@
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content search-popup">
 					<div class="text-center">
-						<a href="#" class="close2" data-dismiss="modal" aria-label="Close">× close</a>
+						<a href="#" class="close2" data-dismiss="modal" aria-label="Close">Close</a>
 					</div>
 					<div class="row search-outer">
 						<div class="col-md-11"><input type="text" placeholder="Search for products..." /></div>
@@ -103,34 +103,32 @@
                         <div class="contact-info" style="background: url(${pageContext.request.contextPath}/assets/img/bg/footer-bg.png) no-repeat;background-size: cover;">
                             <div class="single-cta pb-30 mb-30 wow fadeInUp animated" data-animation="fadeInDown animated" data-delay=".2s">
                                 <div class="f-cta-icon">
-                                    <i class="far fa-map"></i>
+                                    <i class="fas fa-at"></i>
                                 </div> 
                                 <h5>Ecrire votre adresse mail</h5>
-                                <p>380 St Kilda Road, Melbourne <br>
-                                    VIC 3004, Australia</p>
+                                <p>Celle que vous avez fournis pour la creation de votre compte</p>
                             </div>
                             <div class="single-cta pb-30 mb-30 wow fadeInUp animated" data-animation="fadeInDown animated" data-delay=".2s">
                                 <div class="f-cta-icon">
-                                    <i class="far fa-clock"></i>
+                                    <i class="fas fa-key"></i>
                                 </div>
-                                <h5>Working Hours</h5>
-                                <p>Monday to Friday 09:00 to 18:30 and <br>
-                                    Saturday we work until 15:30</p>
+                                <h5>Votre mot de passe</h5>
+                                <p>Si vous etes nouveau? renseignez le mot de passe fourni par votre administrateur, sinon, entrer le votre</p>
                             </div>
-                            <div class="single-cta pb-30 mb-30 wow fadeInUp animated" data-animation="fadeInDown animated" data-delay=".2s">
+                            <!-- <div class="single-cta pb-30 mb-30 wow fadeInUp animated" data-animation="fadeInDown animated" data-delay=".2s">
                                 <div class="f-cta-icon">
                                     <i class="far fa-envelope-open"></i>
                                 </div>
                                 <h5>Message Us</h5>
                                 <p>We are always with you to solve your problem
                                     mail us : <a href="#">support@example.com</a></p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="col-lg-7">
                         <div class="contact-bg02 wow fadeInLeft animated">
                             <div class="section-title center-align">
-                                <h5>CONTACT US</h5>
+                                <!-- <h5>CONTACT US</h5> -->
                                 <h2>Connexion</h2>
 
                                 <% if (message != null) { %>

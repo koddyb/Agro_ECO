@@ -1,14 +1,16 @@
 package Modele;
 
+import controleur.EmpreinteCarbone;
 import controleur.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Modele {
-    private static Connexion uneConnexion = new Connexion("localhost:8889", "agroeco_db", "root", "root");
+    private static Connexion uneConnexion = new Connexion("localhost:3306", "agroeco_db", "root", "");
 
     /********** V�rification des informations de connexion ******/
     public static User verifconnexion(String email, String password) {
@@ -229,4 +231,119 @@ public class Modele {
         }
         return false;
     }
+
+    /********** GESTION DES EMPREINTES CARBONES ******/
+    public static List<EmpreinteCarbone> getAllEmpreinteCarbone() {
+        List<EmpreinteCarbone> empreintes = new ArrayList<>();
+        String requete = "SELECT * FROM empreinte_carbone";
+        try {
+            uneConnexion.seConnecter();
+            PreparedStatement pstmt = uneConnexion.getMaConnexion().prepareStatement(requete);
+            ResultSet unRes = pstmt.executeQuery();
+            while (unRes.next()) {
+                int id = unRes.getInt("id");
+                int userId = unRes.getInt("user_id");
+                int type_emission = unRes.getInt("type_emission");
+                float carbon_emission = unRes.getFloat("carbon_emission");
+                LocalDate date = unRes.getDate("measurement_date").toLocalDate();
+                EmpreinteCarbone empreinte = new EmpreinteCarbone(id, userId, type_emission, carbon_emission, date);
+                empreintes.add(empreinte);
+            }
+            pstmt.close();
+            uneConnexion.deconnexion();
+        } catch (SQLException exp) {
+            System.out.println("Erreur d'execution : " + exp.getMessage());
+        }
+        return empreintes;
+    }
+
+    //insertion dans la table empreinte_carbone
+    public static boolean insertEmpreinteCarbone(int userId, int type_emission, float carbon_emission, LocalDate date) {
+        boolean success = false;
+        String requete = "INSERT INTO empreinte_carbone (user_id, type_emission, carbon_emission, measurement_date) VALUES (?, ?, ?, ?)";
+        try {
+            uneConnexion.seConnecter();
+            PreparedStatement pstmt = uneConnexion.getMaConnexion().prepareStatement(requete);
+            pstmt.setInt(1, userId);
+            pstmt.setInt(2, type_emission);
+            pstmt.setFloat(3, carbon_emission);
+            pstmt.setDate(4, java.sql.Date.valueOf(date));
+            int rowsInserted = pstmt.executeUpdate();
+            if (rowsInserted > 0) {
+                success = true;
+            }
+            pstmt.close();
+            uneConnexion.deconnexion();
+        } catch (SQLException exp) {
+            System.out.println("Erreur d'execution : " + exp.getMessage());
+        }
+        return success;
+    }
+
+    //Update dans la table empreinte_carbone 
+    public static boolean updateEmpreinteCarbone(int id, int userId, int type_emission, float carbon_emission, LocalDate date) {
+        boolean success = false;
+        String requete = "UPDATE empreinte_carbone SET user_id = ?, type_emission = ?, carbon_emission = ?, measurement_date = ? WHERE id = ?";
+        try {
+            uneConnexion.seConnecter();
+            PreparedStatement pstmt = uneConnexion.getMaConnexion().prepareStatement(requete);
+            pstmt.setInt(1, userId);
+            pstmt.setInt(2, type_emission);
+            pstmt.setFloat(3, carbon_emission);
+            pstmt.setDate(4, java.sql.Date.valueOf(date));
+            pstmt.setInt(5, id);
+            int rowsUpdated = pstmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                success = true;
+            }
+            pstmt.close();
+            uneConnexion.deconnexion();
+        } catch (SQLException exp) {
+            System.out.println("Erreur d'execution : " + exp.getMessage());
+        }
+        return success;
+    }
+
+    //On selectione les types d'emission
+    public static List<String[]> getTypesEmission() {
+        List<String[]> types_em = new ArrayList<>();
+        String requete = "SELECT id, name FROM type_emissions";
+        try {
+            uneConnexion.seConnecter();
+            PreparedStatement pstmt = uneConnexion.getMaConnexion().prepareStatement(requete);
+            ResultSet unRes = pstmt.executeQuery();
+            while (unRes.next()) {
+                int id = unRes.getInt("id");
+                String name = unRes.getString("name");
+                types_em.add(new String[]{String.valueOf(id), name});
+            }
+            pstmt.close();
+            uneConnexion.deconnexion();
+        } catch (SQLException exp) {
+            System.out.println("Erreur d'execution : " + exp.getMessage());
+        }
+        return types_em;
+    }
+
+    //On selectione la categorie d'emission
+    public static List<String> getCategoriesEmission() {
+        List<String> categories = new ArrayList<>();
+        String requete = "SELECT * FROM categories_emissions";
+        try {
+            uneConnexion.seConnecter();
+            PreparedStatement pstmt = uneConnexion.getMaConnexion().prepareStatement(requete);
+            ResultSet unRes = pstmt.executeQuery();
+            while (unRes.next()) {
+                String category = unRes.getString("name");
+                categories.add(category);
+            }
+            pstmt.close();
+            uneConnexion.deconnexion();
+        } catch (SQLException exp) {
+            System.out.println("Erreur d'execution : " + exp.getMessage());
+        }
+        return categories;
+    }
+
+    
 }

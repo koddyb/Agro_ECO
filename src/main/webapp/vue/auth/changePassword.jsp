@@ -31,7 +31,7 @@
                     if (success) {
                         // Mise à jour du statut à "confirmed"
                         Controleur.updateStatus(user.getEmail(), "confirmed");
-                        message = "Mot de passe changé avec succès. Vous pouvez maintenant vous connecter.";
+                        message = "Mot de passe change avec succees. Vous pouvez maintenant vous connecter.";
                         messageType = "success";
                         response.sendRedirect("login.jsp");
                         return;

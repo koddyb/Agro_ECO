@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="controleur.User" %>
 
+<% 
+	if (session.getAttribute("currentUserId") == null) {
+		response.sendRedirect(request.getContextPath() + "../auth/login.jsp");
+	}
+%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +73,7 @@
 			</li>-->
 			
 			<li>
-			    <a href="logout.jsp" class="logout">
+			    <a href="${pageContext.request.contextPath}/Deconnexion.jsp" class="logout">
 			        <i class='bx bxs-log-out-circle'></i>
 			        <span class="text">Logout</span>
 			    </a>

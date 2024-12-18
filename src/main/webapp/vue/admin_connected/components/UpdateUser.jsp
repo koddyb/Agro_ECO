@@ -3,7 +3,9 @@
 <%@ page import="controleur.Controleur" %>
 <%@ page import="java.sql.ResultSet" %>
 
-<%
+<%	
+	
+
     // On récupère l'ID de l'utilisateur à modifier
     int userId = Integer.parseInt(request.getParameter("userId"));
     

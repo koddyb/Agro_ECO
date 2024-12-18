@@ -36,7 +36,7 @@
                 if ("new".equals(status)) {
                     // Enregistrer l'utilisateur dans la session et rediriger vers la page de changement de mot de passe
                     session.setAttribute("user", unUser);
-                    response.sendRedirect("changePassword.jsp");
+                    response.sendRedirect("ChangePassword.jsp");
                     return;
                 }
 
@@ -46,7 +46,7 @@
                     session.setAttribute("currentUserId", unUser.getIduser());
 
                     // Message de bienvenue � afficher apr�s la connexion
-                    message = "Bienvenue, " + unUser.getNom() + "! Vous �tes connect�.";
+                    message = "Bienvenue, " + unUser.getNom() + "! Vous etes connectee.";
                     messageType = "success";
 
                     // V�rification du r�le de l'utilisateur pour redirection appropri�e

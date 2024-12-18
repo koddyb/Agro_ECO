@@ -6,6 +6,7 @@
 <%@ page import="controleur.Controleur" %>
 
 <%
+
     int localCurrentUserId = (int) session.getAttribute("currentUserId");
     List<User> localUsers = Controleur.getAllUsersExcept(localCurrentUserId);
 %>

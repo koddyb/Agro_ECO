@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -80,24 +80,20 @@
                             </div>
                           <div class="about-text second-about">
                                     <span>4 </span>
-                              Années d'experiences 
+                              Ans d'experiences 
                                 </div>
                         </div>
                         
 					<div class="col-lg-6 col-md-12 col-sm-12">
                             <div class="about-content s-about-content pl-30">
                                 <div class="about-title second-title pb-25">  
-                                    <h5>Ce que nous faison</h5>
-                                    <h2>Nos Engagements pour la Planète</h2>
+                                    <!-- <h5>Ce que nous faison</h5> -->
+                                    <h2>Nos Engagements</h2>
                                 </div>
                                 
                                 <p>Énergie Renouvelable : Nous utilisons exclusivement de l'énergie verte provenant de sources renouvelables pour alimenter nos bureaux et installations.<br>
 
                                     Réduction des Déchets : Grâce à un programme rigoureux de tri et de recyclage, nous avons réduit nos déchets de 50% au cours des deux dernières années.<br>
-                                    
-                                    Transport Durable : Nous encourageons nos employés à utiliser des modes de transport durables, tels que le vélo, les transports en commun et le covoiturage. <br>
-                                    
-                                    Produits Écologiques : Nous privilégions des matériaux durables et écologiques dans tous nos produits et emballages.</p>
                                   <ul class="progress-outer  mt-30">
                                     <li>
                                         <div class="progress-box">
@@ -113,7 +109,7 @@
                                             <h4>Reduction d'empreinte Carbone</h4>
                                         </div>
                                     </li>
-                                  <li>
+                                <li>
                                         <div class="progress-box">
                                             <div class="progress blue">
                                             <span class="progress-left">

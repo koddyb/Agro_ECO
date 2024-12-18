@@ -3,7 +3,8 @@
 <%@ page import="controleur.User" %>
 <%@ page import="controleur.Controleur" %>
 
-<%
+<%	
+	
     // ID de l'utilisateur connecté récupéré via la session
     int currentUserId = (int) session.getAttribute("currentUserId");
     List<User> users = Controleur.getAllUsersExcept(currentUserId);

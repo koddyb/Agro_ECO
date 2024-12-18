@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="fr">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -22,7 +22,7 @@
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content search-popup">
 					<div class="text-center">
-						<a href="#" class="close2" data-dismiss="modal" aria-label="Close">× close</a>
+						<a href="#" class="close2" data-dismiss="modal" aria-label="Close">close</a>
 					</div>
 					<div class="row search-outer">
 						<div class="col-md-11"><input type="text" placeholder="Search for products..." /></div>
@@ -34,7 +34,7 @@
 		<!-- /search-popup -->
         <!-- slider-area -->
 
-        <section class="breadcrumb-area d-flex align-items-center" style="background-image:url(assets/img/Projets.jpg)">
+        <section class="breadcrumb-area d-flex align-items-center" style="background-image:url(assets/img/testimonial/test-bg.png)">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-xl-12 col-lg-12">
@@ -80,7 +80,7 @@
 
             <div class="grid col3">
                 
-                <div class="grid-item website">     
+                <div class="grid-item prd">     
                
                     <a href="projects-detail.html">
                         <figure class="gallery-image">
@@ -92,7 +92,7 @@
                       </a>
                        
                 </div>
-                <div class="grid-item seo">
+                <div class="grid-item senibilisation">
                       <a href="projects-detail.html">
                         <figure class="gallery-image">
                           <img src="img/gallery/protfolio-img02.png" alt="img" class="img">      
@@ -104,7 +104,7 @@
                      
                        
                 </div>
-                <div class="grid-item marketing smm">
+                <div class="grid-item senibilisation smm">
                    <a href="projects-detail.html">
                         <figure class="gallery-image">
                           <img src="img/gallery/protfolio-img03.png" alt="img" class="img">      
@@ -115,7 +115,7 @@
                       </a>
                
                 </div>
-                <div class="grid-item website">    
+                <div class="grid-item prd">    
                          <a href="projects-detail.html">
                         <figure class="gallery-image">
                           <img src="img/gallery/protfolio-img04.png" alt="img" class="img">      
@@ -127,7 +127,7 @@
                  
                        
                 </div>
-                <div class="grid-item seo smm">
+                <div class="grid-item efficasite smm">
                       <a href="projects-detail.html">
                         <figure class="gallery-image">
                           <img src="img/gallery/protfolio-img05.png" alt="img" class="img">      
@@ -139,7 +139,7 @@
                      
                        
                 </div>
-                <div class="grid-item marketing">
+                <div class="grid-item efficasite">
                         <a href="projects-detail.html">
                         <figure class="gallery-image">
                           <img src="img/gallery/protfolio-img06.png" alt="img" class="img">      

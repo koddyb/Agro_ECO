@@ -86,11 +86,19 @@
 		<nav>
 			<i class='bx bx-menu' id="icon-toggler"></i>
 			<a href="#" class="nav-link" id="resizing">Agrandir</a>
-			<form action="#">
+			<!-- <form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">
 					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
+			</form> -->
+			<form action="components/ResearchUser.jsp" method="get">
+			    <div class="form-input">
+			        <input type="search" name="query" placeholder="Rechercher un utilisateur..." required>
+			        <a href="#" onclick="showSection('research')">
+			        	<button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+			        </a>
+			    </div>
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
@@ -127,6 +135,11 @@
 				<h1>Hello worlds</h1>
 				<p>L'historiques sera ici</p>
 			</div>
+			
+			<div id="research" class="section hidden">
+			    <%@ include file="components/ResearchUser.jsp" %>
+			</div>
+			
 
 			<!--<div id="settings" class="section hidden">
 				<h1>Settings</h1>

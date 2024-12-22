@@ -9,6 +9,8 @@
 
     int localCurrentUserId = (int) session.getAttribute("currentUserId");
     List<User> localUsers = Controleur.getAllUsersExcept(localCurrentUserId);
+    
+    int userCount = Controleur.getUserCount();
 %>
 
 <!DOCTYPE html>
@@ -42,22 +44,22 @@
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
-						<h3>1020</h3>
-						<p>New Order</p>
+						<h3>15/01/25</h3>
+						<p>Événement Eco.</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-						<h3>2834</h3>
-						<p>Visitors</p>
+						<h3><%= userCount %></h3>
+						<p>Utilisateur(s)</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-dollar-circle' ></i>
 					<span class="text">
-						<h3>$2543</h3>
-						<p>Total Sales</p>
+						<h3>2543€</h3>
+						<p>Pertes</p>
 					</span>
 				</li>
 			</ul>
@@ -67,13 +69,11 @@
 				<div class="order">
 					<div class="head">
 						<h3>Suivi des utilisateurs</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
 					</div>
 					<table>
 					    <thead>
 					        <tr>
-					            <th>Utilisateur</th>
+					            <th>Utilisateur(s)</th>
 					            <th>Date de créat.</th>
 					            <th>Status</th>
 					        </tr>

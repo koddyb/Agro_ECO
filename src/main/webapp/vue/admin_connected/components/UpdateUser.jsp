@@ -18,12 +18,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../../../assets/css/index_admin.css">
+    <link rel="stylesheet" href="../../assets/css/form.css">
     <title>Modifier l'utilisateur</title>
 </head>
 <body>
-    <div class="form-container">
+    <div class="">
         <div class="table-data">
         	<div class="order">
         		<h3>Modifier l'utilisateur</h3>
@@ -53,7 +52,9 @@
 		                <label for="status">Statut</label>
 		                <input type="text" id="status" name="status" value="<%= user.getStatus() %>" required />
 		            </div>
-		            <button type="submit">Mettre à jour</button>
+		           	<div class="buttons">
+		           	 	<button type="submit">Mettre à jour</button>
+		           	</div>
 		        </form>
 		        <%
 				    if ("POST".equalsIgnoreCase(request.getMethod())) {

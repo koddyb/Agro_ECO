@@ -88,7 +88,19 @@ public class Controleur {
         return Modele.getTypesEmission();
     }
 
+    //On récupère les catégorie d'émission
     public static List<String> getCategoriesEmission() {
         return Modele.getCategoriesEmission();
     }
+    
+    //On compte le nombre de user
+    public static int getUserCount() {
+        return Modele.getUserCount();
+    }
+    
+    //Rechercher un user par son nom
+    public static List<User> searchUsers(String searchQuery) {
+        return Modele.searchUsersByName(searchQuery);
+    }
+
 }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Modele {
-    private static Connexion uneConnexion = new Connexion("localhost:3306", "agroeco_db", "root", "");
+    private static Connexion uneConnexion = new Connexion("localhost:8889", "agroeco_db", "root", "root");
 
     /********** Vï¿½rification des informations de connexion ******/
     public static User verifconnexion(String email, String password) {
@@ -344,6 +344,58 @@ public class Modele {
         }
         return categories;
     }
+    
+    //On récupère le nombre d'utilisateur
+    public static int getUserCount() {
+        int count = 0;
+        String requete = "SELECT COUNT(*) AS total FROM user";
+        try {
+            uneConnexion.seConnecter();
+            PreparedStatement pstmt = uneConnexion.getMaConnexion().prepareStatement(requete);
+            ResultSet unRes = pstmt.executeQuery();
+            if (unRes.next()) {
+                count = unRes.getInt("total");
+            }
+            pstmt.close();
+            uneConnexion.deconnexion();
+        } catch (SQLException exp) {
+            System.out.println("Erreur d'execution : " + exp.getMessage());
+        }
+        return count;
+    }
+    
+    //Rechercher un user par son nom
+    public static List<User> searchUsersByName(String searchQuery) {
+        List<User> users = new ArrayList<>();
+        String requete = "SELECT * FROM user WHERE name LIKE ?";
 
+        try {
+            uneConnexion.seConnecter();
+            PreparedStatement pstmt = uneConnexion.getMaConnexion().prepareStatement(requete);
+            pstmt.setString(1, searchQuery + "%");
+            ResultSet unRes = pstmt.executeQuery();
+
+            while (unRes.next()) {
+                int id = unRes.getInt("id");
+                String name = unRes.getString("name");
+                String first_name = unRes.getString("first_name");
+                String email = unRes.getString("email");
+                String password = unRes.getString("password");
+                String role = unRes.getString("role");
+                String status = unRes.getString("status");
+                String created_at = unRes.getString("created_at");
+
+                User user = new User(id, name, first_name, email, password, role, status, created_at);
+                users.add(user);
+            }
+
+            pstmt.close();
+            uneConnexion.deconnexion();
+        } catch (SQLException exp) {
+            System.out.println("Erreur d'exécution : " + exp.getMessage());
+        }
+
+        return users;
+    }
     
 }

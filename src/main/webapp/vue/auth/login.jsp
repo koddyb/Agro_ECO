@@ -36,7 +36,7 @@
                 if ("new".equals(status)) {
                     // Enregistrer l'utilisateur dans la session et rediriger vers la page de changement de mot de passe
                     session.setAttribute("user", unUser);
-                    response.sendRedirect("ChangePassword.jsp");
+                    response.sendRedirect("changePassword.jsp");
                     return;
                 }
 

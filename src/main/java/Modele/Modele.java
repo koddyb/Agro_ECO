@@ -1,6 +1,7 @@
 package Modele;
 
 import controleur.EmpreinteCarbone;
+
 import controleur.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +9,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.*;
 
 public class Modele {
     private static Connexion uneConnexion = new Connexion("localhost:8889", "agroeco_db", "root", "root");
@@ -210,7 +212,7 @@ public class Modele {
     }
     
     /********** Mise ï¿½ jour d'un utilisateur ******/
-    public static boolean updateUser(int userId, String name, String firstName, String email, String password, String role, String status) {
+    /*public static boolean updateUser(int userId, String name, String firstName, String email, String password, String role, String status) {
         String requete = "UPDATE user SET name = ?, first_name = ?, email = ?, password = ?, role = ?, status = ? WHERE id = ?";
         try {
             uneConnexion.seConnecter();
@@ -228,6 +230,53 @@ public class Modele {
             return rowsAffected > 0;
         } catch (SQLException exp) {
             System.out.println("Erreur de mise ï¿½ jour : " + exp.getMessage());
+        }
+        return false;
+    }*/
+    
+    /********** Mise à jour d'un utilisateur ******/
+    public static boolean updateUser(int userId, String name, String firstName, String email, String password, String role, String status) {
+        String selectPasswordQuery = "SELECT password FROM user WHERE id = ?";
+        String updateQuery = "UPDATE user SET name = ?, first_name = ?, email = ?, password = ?, role = ?, status = ? WHERE id = ?";
+        try {
+            // Connexion à la base
+            uneConnexion.seConnecter();
+
+            // Vérifier le mot de passe actuel
+            PreparedStatement selectStmt = uneConnexion.getMaConnexion().prepareStatement(selectPasswordQuery);
+            selectStmt.setInt(1, userId);
+            ResultSet rs = selectStmt.executeQuery();
+
+            String currentPassword = null;
+            if (rs.next()) {
+                currentPassword = rs.getString("password");
+            }
+            rs.close();
+            selectStmt.close();
+
+            // Si le mot de passe a changé, on force le statut à "new"
+            if (currentPassword != null && !currentPassword.equals(password)) {
+                status = "new";
+            }
+
+            // Mise à jour de l'utilisateur
+            PreparedStatement updateStmt = uneConnexion.getMaConnexion().prepareStatement(updateQuery);
+            updateStmt.setString(1, name);
+            updateStmt.setString(2, firstName);
+            updateStmt.setString(3, email);
+            updateStmt.setString(4, password);
+            updateStmt.setString(5, role);
+            updateStmt.setString(6, status);
+            updateStmt.setInt(7, userId);
+
+            int rowsAffected = updateStmt.executeUpdate();
+            updateStmt.close();
+            uneConnexion.deconnexion();
+
+            // Retourne true si au moins une ligne a été modifiée
+            return rowsAffected > 0;
+        } catch (SQLException exp) {
+            System.out.println("Erreur de mise à jour : " + exp.getMessage());
         }
         return false;
     }

@@ -68,7 +68,16 @@
 						        </button>
 						    </form>
 						</td>
-						<td><button type="submit" style="all: unset;"><img src="../../assets/img/icon/prevenir.png"></button></td>
+						<!-- <td><button type="submit" style="all: unset;"><img src="../../assets/img/icon/prevenir.png"></button></td> -->
+						<td>
+						    <form action="components/EnvoyerEmail.jsp" method="post" style="display: inline;">
+						        <input type="hidden" name="userId" value="<%= user.getIduser() %>" />
+						        <button type="submit" style="all: unset;">
+						            <img src="../../assets/img/icon/prevenir.png" alt="Envoyer Email">
+						        </button>
+						    </form>
+						</td>	
+									
 					</tr>
 					 <%
 			         	}

@@ -28,7 +28,7 @@
 </head>
 <body>
 	<section id="sidebar">
-		<a href="../" class="brand">
+		<a href="../admin_connected/index_admin.jsp" class="brand">
 			<img src="${pageContext.request.contextPath}/assets/img/logo/agro-eco.png" alt="logo" style="width: 30px; height: 30px; margin: 20px;">
 			<span class="text">Agro Eco</span>
 		</a>
@@ -75,7 +75,7 @@
 			<li>
 			    <a href="${pageContext.request.contextPath}/Deconnexion.jsp" class="logout">
 			        <i class='bx bxs-log-out-circle'></i>
-			        <span class="text">Logout</span>
+			        <span class="text">Se déconnecter</span>
 			    </a>
 			</li>
 		</ul>
@@ -86,12 +86,14 @@
 		<nav>
 			<i class='bx bx-menu' id="icon-toggler"></i>
 			<a href="#" class="nav-link" id="resizing">Agrandir</a>
+			<!-- 1 ere methode -->
 			<!-- <form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">
 					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 			</form> -->
+			<!-- 2e methode -->
 			<form action="components/ResearchUser.jsp" method="get">
 			    <div class="form-input">
 			        <input type="search" name="query" placeholder="Rechercher un utilisateur..." required>
@@ -100,6 +102,7 @@
 			        </a>
 			    </div>
 			</form>
+			
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
 			<a href="#" class="notification">
@@ -152,7 +155,5 @@
 	<script src="../../assets/js/dynamicDashboard.js"></script>
 
 </body>
-</html>
-	
-</body>
+
 </html>

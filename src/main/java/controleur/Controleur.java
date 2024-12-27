@@ -3,6 +3,9 @@ package controleur;
 import Modele.Modele;
 import java.time.LocalDate;
 import java.util.List;
+import javax.mail.*;
+import javax.mail.internet.*;
+import java.util.Properties;
 
 public class Controleur {
     /********** Gestion des User ******/
@@ -104,6 +107,49 @@ public class Controleur {
     public static List<User> searchUsers(String searchQuery) {
         return Modele.searchUsersByName(searchQuery);
     }
+    
+    //Envoi d'un email avec l'email et le mot de passe
+    public static void envoyerEmail(String userEmail, String userPassword) {
+        // Configuration de la session de l'email
+        String host = "smtp.gmail.com"; // Serveur SMTP Gmail
+        String from = "mouyabidepaul17@gmail.com"; // Votre adresse email
+        String password = "jldl paqw ymee qxpj"; // Mot de passe d'application (si l'authentification 2FA est activ�e)
+
+        // Param�tres pour configurer l'authentification et s�curiser la connexion
+        Properties props = new Properties();
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587"); // Port pour STARTTLS
+        props.put("mail.smtp.auth", "true"); // Authentification requise
+        props.put("mail.smtp.starttls.enable", "true"); // Activation de STARTTLS
+
+        // Cr�ation de la session de mail avec authentification
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(from, password);
+            }
+        });
+
+        try {
+            // Cr�ation de l'objet message
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(userEmail));
+            message.setSubject("Informations de Connexion");
+
+            // Corps du message (email et mot de passe)
+            String messageContent = "Voici vos informations de connexion :\n\n";
+            messageContent += "Email : " + userEmail + "\n";
+            messageContent += "Mot de passe : " + userPassword;
+
+            message.setText(messageContent);
+
+            // Envoi du message
+            Transport.send(message);
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+            throw new RuntimeException("Erreur lors de l'envoi de l'email", mex);
+        }
+    }
 
     // ----------------- GESTION DES BLOGS --------------- //
 
@@ -141,5 +187,4 @@ public class Controleur {
             return "Erreur lors de la mise � jour du blog.";
         }
     }
-
 }

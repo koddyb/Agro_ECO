@@ -1,5 +1,6 @@
 package Modele;
 
+import controleur.Blog;
 import controleur.EmpreinteCarbone;
 import controleur.User;
 import java.sql.PreparedStatement;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Modele {
-    private static Connexion uneConnexion = new Connexion("localhost:8889", "agroeco_db", "root", "root");
+    private static Connexion uneConnexion = new Connexion("localhost:3306", "agroeco_db", "root", "");
 
     /********** V�rification des informations de connexion ******/
     public static User verifconnexion(String email, String password) {
@@ -345,7 +346,7 @@ public class Modele {
         return categories;
     }
     
-    //On r�cup�re le nombre d'utilisateur
+    //On r�cup�re le nombre d'utilisateur
     public static int getUserCount() {
         int count = 0;
         String requete = "SELECT COUNT(*) AS total FROM user";
@@ -392,10 +393,127 @@ public class Modele {
             pstmt.close();
             uneConnexion.deconnexion();
         } catch (SQLException exp) {
-            System.out.println("Erreur d'ex�cution : " + exp.getMessage());
+            System.out.println("Erreur d'ex�cution : " + exp.getMessage());
         }
 
         return users;
     }
-    
+
+    /************ GESTION DES BLOGS*************** */
+
+    public static List<Blog> getAllBlogs() {
+        List<Blog> blogs = new ArrayList<>();
+        String requete = "SELECT * FROM blog_post";
+        try {
+            uneConnexion.seConnecter();
+            PreparedStatement pstmt = uneConnexion.getMaConnexion().prepareStatement(requete);
+            ResultSet unRes = pstmt.executeQuery();
+            while (unRes.next()) {
+                int id = unRes.getInt("id");
+                int userId = unRes.getInt("user_id");
+                String titre = unRes.getString("titre");
+                String imageUrl = unRes.getString("image_url");
+                String contenu = unRes.getString("contenu");
+                LocalDate date = unRes.getDate("created_at").toLocalDate();
+                Blog blog = new Blog(id, userId, titre, imageUrl, contenu, date);
+                blogs.add(blog);
+            }
+            pstmt.close();
+            uneConnexion.deconnexion();
+        } catch (SQLException exp) {
+            System.out.println("Erreur d'execution : " + exp.getMessage());
+        }
+        return blogs;
+    }
+
+    //Récupération d'un blog par son ID
+    public static Blog getBlogById(int blogId) {
+        String requete = "SELECT * FROM blog_post WHERE id = ?";
+        try {
+            uneConnexion.seConnecter();
+            PreparedStatement pstmt = uneConnexion.getMaConnexion().prepareStatement(requete);
+            pstmt.setInt(1, blogId);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                int userId = rs.getInt("user_id");
+                String titre = rs.getString("titre");
+                String imageUrl = rs.getString("image_url");
+                String contenu = rs.getString("contenu");
+                LocalDate date = rs.getDate("created_at").toLocalDate();
+                Blog blog = new Blog(id, userId, titre, imageUrl, contenu, date);
+                rs.close();
+                pstmt.close();
+                uneConnexion.deconnexion();
+                return blog;
+            }
+        } catch (SQLException exp) {
+            System.out.println("Erreur de récupération du blog : " + exp.getMessage());
+        }
+        return null;
+    }
+
+    //Ajout d'un blog
+    public static boolean addBlog(int userId, String titre, String imageUrl, String contenu, LocalDate date) {
+        boolean success = false;
+        String requete = "INSERT INTO blog_post (user_id, titre, image_url, contenu, created_at) VALUES (?, ?, ?, ?, ?)";
+        try {
+            uneConnexion.seConnecter();
+            PreparedStatement pstmt = uneConnexion.getMaConnexion().prepareStatement(requete);
+            pstmt.setInt(1, userId);
+            pstmt.setString(2, titre);
+            pstmt.setString(3, imageUrl);
+            pstmt.setString(4, contenu);
+            pstmt.setDate(5, java.sql.Date.valueOf(date));
+            int rowsInserted = pstmt.executeUpdate();
+            if (rowsInserted > 0) {
+                success = true;
+            }
+            pstmt.close();
+            uneConnexion.deconnexion();
+        } catch (SQLException exp) {
+            System.out.println("Erreur d'execution : " + exp.getMessage());
+        }
+        return success;
+    }
+
+    //Suppression d'un blog par son ID
+    public static boolean deleteBlog(int blogId) {
+        String requete = "DELETE FROM blog_post WHERE id = ?";
+        try {
+            uneConnexion.seConnecter();
+            PreparedStatement pstmt = uneConnexion.getMaConnexion().prepareStatement(requete);
+            pstmt.setInt(1, blogId);
+            int rowsAffected = pstmt.executeUpdate();
+            pstmt.close();
+            uneConnexion.deconnexion();
+            return rowsAffected > 0;
+        } catch (SQLException exp) {
+            System.out.println("Erreur de suppression : " + exp.getMessage());
+        }
+        return false;
+    }
+
+    //Mise à jour d'un blog
+    public static boolean updateBlog(int blogId, int userId, String titre, String imageUrl, String contenu, LocalDate date) {
+        String requete = "UPDATE blog_post SET user_id = ?, titre = ?, image_url = ?, contenu = ?, created_at = ? WHERE id = ?";
+        try {
+            uneConnexion.seConnecter();
+            PreparedStatement pstmt = uneConnexion.getMaConnexion().prepareStatement(requete);
+            pstmt.setInt(1, userId);
+            pstmt.setString(2, titre);
+            pstmt.setString(3, imageUrl);
+            pstmt.setString(4, contenu);
+            pstmt.setDate(5, java.sql.Date.valueOf(date));
+            pstmt.setInt(6, blogId);
+            int rowsAffected = pstmt.executeUpdate();
+            pstmt.close();
+            uneConnexion.deconnexion();
+            return rowsAffected > 0;
+        } catch (SQLException exp) {
+            System.out.println("Erreur de mise à jour : " + exp.getMessage());
+        }
+        return false;
+    }
+
 }

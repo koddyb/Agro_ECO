@@ -59,6 +59,8 @@ public class Controleur {
         }
     }
 
+
+
     public static List<EmpreinteCarbone> getAllEmpreinteCarbone(int userId) {
         return Modele.getAllEmpreinteCarbone();
     }
@@ -88,7 +90,7 @@ public class Controleur {
         return Modele.getTypesEmission();
     }
 
-    //On récupère les catégorie d'émission
+    //On rï¿½cupï¿½re les catï¿½gorie d'ï¿½mission
     public static List<String> getCategoriesEmission() {
         return Modele.getCategoriesEmission();
     }
@@ -101,6 +103,43 @@ public class Controleur {
     //Rechercher un user par son nom
     public static List<User> searchUsers(String searchQuery) {
         return Modele.searchUsersByName(searchQuery);
+    }
+
+    // ----------------- GESTION DES BLOGS --------------- //
+
+    // Rï¿½cupï¿½ration de tous les blogs
+    public static List<Blog> getAllBlogs() {
+        return Modele.getAllBlogs();
+    }
+
+    // Rï¿½cupï¿½ration d'un blog par son ID
+    public static Blog getBlogById(int blogId) {
+        return Modele.getBlogById(blogId);
+    }
+
+    // Ajout d'un blog
+    public static String addBlog(int userId, String titre, String imageUrl, String contenu, LocalDate date) {
+        boolean success = Modele.addBlog(userId, titre, imageUrl, contenu, date);
+        if (success) {
+            return "Blog ajouter avec succï¿½s!";
+        } else {
+            return "Erreur lors de l'ajout du blog.";
+        }
+    }
+
+    // Suppression d'un blog par son ID
+    public static boolean deleteBlog(int blogId) {
+        return Modele.deleteBlog(blogId);
+    }
+
+    // Mise Ã  jour d'un Blog
+    public static String updateBlog(int blogId, int userId, String titre, String imageUrl, String contenu, LocalDate date) {
+        boolean isUpdated = Modele.updateBlog(blogId, userId, titre, imageUrl, contenu, date);
+        if (isUpdated) {
+            return "Le blog a ï¿½tï¿½ mis ï¿½ jour avec succï¿½s.";
+        } else {
+            return "Erreur lors de la mise ï¿½ jour du blog.";
+        }
     }
 
 }

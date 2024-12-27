@@ -1,8 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
 <!-- Tout le header et la navbar ici     -->
-<header class="header-area header-three">
+<header class="header-area">
     <div id="header-sticky" class="menu-area">
         <div class="container">
             <div class="second-menu">
@@ -19,7 +16,7 @@
                                 <ul>
                                     <li><a href="a_propos.jsp">A propos de nous</a></li>
                                     <li><a href="projects.jsp">Projet</a></li>
-                                    <li><a href="blog.jsp">Blog</a></li>
+                                    <li><a href="vue/blog/blog.jsp">Blog</a></li>
                                 </ul>
                             </nav>
                         </div>

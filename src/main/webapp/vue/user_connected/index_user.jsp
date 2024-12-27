@@ -31,7 +31,7 @@
 </head>
 <body>
 	<section id="sidebar">
-		<a href="../" class="brand">
+		<a href="../../index.jsp" class="brand">
 			<img src="${pageContext.request.contextPath}/assets/img/logo/agro-eco.png" alt="logo" style="width: 30px; height: 30px; margin: 20px;">
 			<span class="text">AgroEco</span>
 		</a>
@@ -45,13 +45,19 @@
 			<li>
 				<a href="#" onclick="showSection('carbone')">
 					<i class='bx bxs-user-plus' ></i>
-					<span class="text">Infos sur l'empreinte carbone</span>
+					<span class="text">Formulaire Emission Carbone</span>
 				</a>
 			</li>
 			<li>
 				<a href="#" onclick="showSection('Read_carbone')">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Liste des parametres de l'EC</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" onclick="showSection('Add_publication')">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Ajout oublication  de blog</span>
 				</a>
 			</li>
 		</ul>
@@ -106,8 +112,8 @@
 				<%@ include file="components/Form_carbone.jsp" %>
 			</div>
 			
-			<div id="Read_carbone" class="section hidden">
-				 
+			<div id="Add_publication" class="section hidden">
+				<%@ include file="components/Add_publication.jsp" %>
 			</div>
 
 			<div id="statistiques" class="section hidden">

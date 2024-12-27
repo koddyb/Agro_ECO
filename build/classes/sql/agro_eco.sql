@@ -45,6 +45,18 @@ CREATE TABLE type_emissions (
     FOREIGN KEY (category_id) REFERENCES categories_emissions(id)
 );
 
+-- Table pour les publications du blog
+CREATE TABLE blog_post (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    titre VARCHAR(255) NOT NULL,
+    image_url VARCHAR(255),
+    contenu TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
 -- Insertion des types d'émissions
 INSERT INTO type_emissions (category_id, name) VALUES
 (1, 'Consommation d\'électricité'),

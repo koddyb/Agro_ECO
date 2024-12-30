@@ -3,50 +3,20 @@ package controleur;
 import java.time.LocalDate;
 
 public class Blog {
-    private int id;
-    private int userId;
     private String titre;
-    private String imageUrl;
+    private String image;  // URL de l'image
     private String contenu;
-    private LocalDate date;
+    private LocalDate datePublication;
 
-    public Blog(int id, int userId, String titre, String imageUrl, String contenu, LocalDate date) {
-        super();
-        this.id = id;
-        this.userId = userId;
+    // Constructeur
+    public Blog(String titre, String image, String contenu, LocalDate datePublication) {
         this.titre = titre;
-        this.imageUrl = imageUrl;
+        this.image = image;
         this.contenu = contenu;
-        this.date = date;
+        this.datePublication = datePublication;
     }
 
-    public Blog(int userId, String titre, String imageUrl, String contenu, LocalDate date) {
-        super();
-        this.id = 0;
-        this.userId = userId;
-        this.titre = titre;
-        this.imageUrl = imageUrl;
-        this.contenu = contenu;
-        this.date = date;
-    }
-    
-    //getters and setters
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
+    // Getters et setters
     public String getTitre() {
         return titre;
     }
@@ -54,13 +24,13 @@ public class Blog {
     public void setTitre(String titre) {
         this.titre = titre;
     }
-    
-    public String getImageUrl() {
-        return imageUrl;
+
+    public String getImage() {
+        return image;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getContenu() {
@@ -71,11 +41,11 @@ public class Blog {
         this.contenu = contenu;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getDatePublication() {
+        return datePublication;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDatePublication(LocalDate datePublication) {
+        this.datePublication = datePublication;
     }
 }

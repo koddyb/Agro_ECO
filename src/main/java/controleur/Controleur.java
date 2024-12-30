@@ -154,23 +154,19 @@ public class Controleur {
     // ----------------- GESTION DES BLOGS --------------- //
 
     // R�cup�ration de tous les blogs
-    public static List<Blog> getAllBlogs() {
+    /*public static List<Blog> getAllBlogs() {
         return Modele.getAllBlogs();
-    }
+    }*/
 
     // R�cup�ration d'un blog par son ID
-    public static Blog getBlogById(int blogId) {
+    /*public static Blog getBlogById(int blogId) {
         return Modele.getBlogById(blogId);
-    }
+    }*/
 
-    // Ajout d'un blog
-    public static String addBlog(int userId, String titre, String imageUrl, String contenu, LocalDate date) {
-        boolean success = Modele.addBlog(userId, titre, imageUrl, contenu, date);
-        if (success) {
-            return "Blog ajouter avec succ�s!";
-        } else {
-            return "Erreur lors de l'ajout du blog.";
-        }
+    /********** Ajouter un blog post ******/
+    public static boolean ajouterBlog(String titre, String imageUrl, String contenu, int userId) {
+        Blog blog = new Blog(titre, imageUrl, contenu, java.time.LocalDate.now());  // Date actuelle
+        return Modele.ajouterBlog(blog, userId);
     }
 
     // Suppression d'un blog par son ID

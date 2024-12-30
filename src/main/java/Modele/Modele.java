@@ -13,7 +13,7 @@ import java.util.List;
 import java.sql.*;
 
 public class Modele {
-    private static Connexion uneConnexion = new Connexion("localhost:3306", "agroeco_db", "root", "");
+    private static Connexion uneConnexion = new Connexion("localhost:8889", "agroeco_db", "root", "root");
 
     /********** V�rification des informations de connexion ******/
     public static User verifconnexion(String email, String password) {
@@ -450,7 +450,7 @@ public class Modele {
 
     /************ GESTION DES BLOGS*************** */
 
-    public static List<Blog> getAllBlogs() {
+    /*public static List<Blog> getAllBlogs() {
         List<Blog> blogs = new ArrayList<>();
         String requete = "SELECT * FROM blog_post";
         try {
@@ -461,10 +461,10 @@ public class Modele {
                 int id = unRes.getInt("id");
                 int userId = unRes.getInt("user_id");
                 String titre = unRes.getString("titre");
-                String imageUrl = unRes.getString("image_url");
+                String image = unRes.getString("image");
                 String contenu = unRes.getString("contenu");
-                LocalDate date = unRes.getDate("created_at").toLocalDate();
-                Blog blog = new Blog(id, userId, titre, imageUrl, contenu, date);
+                LocalDate datePublication = unRes.getDate("created_at").toLocalDate();
+                Blog blog = new Blog(id, userId, titre, image, contenu, datePublication);
                 blogs.add(blog);
             }
             pstmt.close();
@@ -473,10 +473,10 @@ public class Modele {
             System.out.println("Erreur d'execution : " + exp.getMessage());
         }
         return blogs;
-    }
+    }*/
 
     //Récupération d'un blog par son ID
-    public static Blog getBlogById(int blogId) {
+    /*public static Blog getBlogById(int blogId) {
         String requete = "SELECT * FROM blog_post WHERE id = ?";
         try {
             uneConnexion.seConnecter();
@@ -487,10 +487,10 @@ public class Modele {
                 int id = rs.getInt("id");
                 int userId = rs.getInt("user_id");
                 String titre = rs.getString("titre");
-                String imageUrl = rs.getString("image_url");
+                String image = rs.getString("image");
                 String contenu = rs.getString("contenu");
                 LocalDate date = rs.getDate("created_at").toLocalDate();
-                Blog blog = new Blog(id, userId, titre, imageUrl, contenu, date);
+                Blog blog = new Blog(id, userId, titre, image, contenu, date);
                 rs.close();
                 pstmt.close();
                 uneConnexion.deconnexion();
@@ -500,31 +500,30 @@ public class Modele {
             System.out.println("Erreur de récupération du blog : " + exp.getMessage());
         }
         return null;
-    }
+    }*/
 
-    //Ajout d'un blog
-    public static boolean addBlog(int userId, String titre, String imageUrl, String contenu, LocalDate date) {
+    /********** Ajouter un nouveau blog post ******/
+    public static boolean ajouterBlog(Blog blog, int userId) {
         boolean success = false;
-        String requete = "INSERT INTO blog_post (user_id, titre, image_url, contenu, created_at) VALUES (?, ?, ?, ?, ?)";
+        String requete = "INSERT INTO blog_post (user_id, titre, image_url, contenu, created_at, updated_at) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)";
         try {
             uneConnexion.seConnecter();
             PreparedStatement pstmt = uneConnexion.getMaConnexion().prepareStatement(requete);
-            pstmt.setInt(1, userId);
-            pstmt.setString(2, titre);
-            pstmt.setString(3, imageUrl);
-            pstmt.setString(4, contenu);
-            pstmt.setDate(5, java.sql.Date.valueOf(date));
-            int rowsInserted = pstmt.executeUpdate();
-            if (rowsInserted > 0) {
-                success = true;
-            }
+            pstmt.setInt(1, userId);  // Utiliser l'ID de l'utilisateur
+            pstmt.setString(2, blog.getTitre());
+            pstmt.setString(3, blog.getImage());  // Utiliser getImage() au lieu de getImageUrl()
+            pstmt.setString(4, blog.getContenu());
+            
+            int rowsAffected = pstmt.executeUpdate();
+            success = rowsAffected > 0;
             pstmt.close();
             uneConnexion.deconnexion();
         } catch (SQLException exp) {
-            System.out.println("Erreur d'execution : " + exp.getMessage());
+            System.out.println("Erreur d'ex�cution : " + exp.getMessage());
         }
         return success;
     }
+
 
     //Suppression d'un blog par son ID
     public static boolean deleteBlog(int blogId) {
